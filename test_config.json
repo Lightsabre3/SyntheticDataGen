@@ -1,0 +1,62 @@
+{
+  "generation_config": {
+    "target_images": 2,
+    "batch_size": 1,
+    "width": 1024,
+    "height": 1024,
+    "inference_steps": 30,
+    "guidance_scale": 7.5,
+    "max_runtime_hours": 1,
+    "save_interval": 1
+  },
+  "output_config": {
+    "base_output_dir": "test_output",
+    "create_subdirs": true,
+    "save_metadata": true,
+    "compress_images": true
+  },
+  "quality_config": {
+    "min_brightness": 20,
+    "min_contrast": 10,
+    "min_quality_score": 0.3,
+    "enable_quality_filtering": true
+  },
+  "performance_config": {
+    "use_half_precision": false,
+    "enable_xformers": true,
+    "enable_compilation": true,
+    "memory_fraction": 0.95,
+    "cleanup_interval": 10
+  },
+  "monitoring_config": {
+    "log_level": "INFO",
+    "progress_log_interval": 1,
+    "resource_monitor_interval": 60,
+    "save_progress_interval": 1
+  },
+  "prompt_config": {
+    "num_unique_prompts": 10,
+    "prompt_categories": {
+      "base_scenarios": [
+        "winding rural country road through rolling green hills",
+        "straight farm road between golden wheat fields"
+      ],
+      "road_surfaces": [
+        "asphalt road with yellow center line",
+        "well-maintained country road"
+      ],
+      "lighting_conditions": [
+        "golden hour lighting, warm natural light",
+        "bright daylight, clear visibility"
+      ],
+      "weather_conditions": [
+        "clear blue sky with wispy clouds",
+        "spring day, fresh atmosphere"
+      ],
+      "quality_terms": [
+        "professional automotive photography, DSLR quality",
+        "high resolution, perfect focus, sharp details"
+      ]
+    }
+  }
+}

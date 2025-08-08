@@ -1,0 +1,100 @@
+{
+  "generation_config": {
+    "target_images": 10000,
+    "batch_size": 4,
+    "width": 1024,
+    "height": 1024,
+    "inference_steps": 30,
+    "guidance_scale": 7.5,
+    "max_runtime_hours": 72,
+    "save_interval": 100
+  },
+  "output_config": {
+    "base_output_dir": "rural_driving_10k",
+    "create_subdirs": true,
+    "save_metadata": true,
+    "compress_images": true
+  },
+  "quality_config": {
+    "min_brightness": 20,
+    "min_contrast": 10,
+    "min_quality_score": 0.3,
+    "enable_quality_filtering": true
+  },
+  "performance_config": {
+    "use_half_precision": false,
+    "enable_xformers": true,
+    "enable_compilation": true,
+    "memory_fraction": 0.95,
+    "cleanup_interval": 10
+  },
+  "monitoring_config": {
+    "log_level": "INFO",
+    "progress_log_interval": 100,
+    "resource_monitor_interval": 60,
+    "save_progress_interval": 1000
+  },
+  "prompt_config": {
+    "num_unique_prompts": 1000,
+    "prompt_categories": {
+      "base_scenarios": [
+        "winding rural country road through rolling green hills",
+        "straight farm road between golden wheat fields",
+        "mountain highway through dense pine forest",
+        "coastal rural road with ocean glimpses",
+        "prairie highway through vast grasslands",
+        "country lane with stone walls and hedgerows",
+        "forest service road through mixed woodland",
+        "rural highway through vineyard country",
+        "desert highway through sagebrush landscape",
+        "highland road through moorland and heather"
+      ],
+      "road_surfaces": [
+        "asphalt road with yellow center line",
+        "concrete highway with lane markings",
+        "well-maintained country road",
+        "weathered rural highway",
+        "freshly paved road surface"
+      ],
+      "lighting_conditions": [
+        "golden hour lighting, warm natural light",
+        "overcast day, soft diffused lighting",
+        "early morning light with long shadows",
+        "late afternoon sun, dramatic lighting",
+        "bright daylight, clear visibility",
+        "partly cloudy sky, dynamic lighting"
+      ],
+      "weather_conditions": [
+        "clear blue sky with wispy clouds",
+        "partly cloudy, dynamic sky",
+        "morning mist in the distance",
+        "crisp autumn air, perfect visibility",
+        "spring day, fresh atmosphere",
+        "adverse weather, heavy rain"
+      ],
+      "quality_terms": [
+        "professional automotive photography, DSLR quality",
+        "ultra-detailed, photorealistic, masterpiece",
+        "award-winning photography, crystal clear",
+        "high resolution, perfect focus, sharp details",
+        "professional grade, ultra-realistic"
+      ]
+    }
+  },
+  "estimated_performance": {
+    "expected_speed_images_per_hour": 1440,
+    "estimated_total_time_hours": 7,
+    "estimated_total_time_days": 0.3,
+    "storage_requirements_gb": 30,
+    "gpu_memory_requirements_gb": 16
+  },
+  "recommendations": {
+    "optimal_batch_size_16gb": 4,
+    "optimal_batch_size_24gb": 6,
+    "optimal_batch_size_32gb": 8,
+    "recommended_inference_steps": 30,
+    "recommended_guidance_scale": 7.5,
+    "break_into_chunks": true,
+    "chunk_size": 1000
+  }
+}
