@@ -74,16 +74,38 @@ The notebook includes an automatic dependency installer. Simply run the first ce
 
 ### 3. Run Generation
 Execute the notebook cells in order:
+
+#### **Main Notebook (sdxl_rural_driving_gen.ipynb)**:
 1. **Dependency Installation** - Automatic setup and conflict resolution
-2. **SDXL Pipeline Setup** - Load and optimize the generation model
-3. **Image Generation** - Generate 50 high-quality rural driving images
-4. **Quality Analysis** - Comprehensive comparison with real datasets
+2. **SDXL Pipeline Setup** - Load and optimize the generation model  
+3. **Image Generation** - Generate 15-50 high-quality rural driving images
+4. **Real Data Comparison** - Compare against KITTI, Cityscapes, BDD100K
+5. **CARLA Comparison** - Benchmark against simulation quality
+6. **Advanced Metrics** - Calculate FID, Dice, SSIM scores
+7. **Dataset Export** - Save organized dataset with metadata
+
+#### **CARLA Integration (carla_integration.ipynb)** (Optional):
+1. **CARLA Connection** - Connect to running CARLA simulator
+2. **Vehicle & Camera Setup** - Spawn vehicle with matching camera settings
+3. **Comparative Capture** - Capture CARLA images for direct comparison
+4. **Quality Analysis** - Side-by-side SDXL vs CARLA evaluation
+5. **Mixed Dataset Creation** - Combine both approaches for training
 
 ### 4. Expected Output
-- **50 high-quality images** (1024x1024) in ~5-10 minutes
+
+#### **From Main Notebook**:
+- **15-50 high-quality images** (1024x1024) in ~15-30 minutes
 - **Quality metrics** comparing against KITTI, Cityscapes, BDD100K
-- **Visualization dashboard** with comprehensive analysis
-- **Performance benchmarks** and generation statistics
+- **CARLA simulation benchmarks** with similarity scores
+- **Advanced evaluation metrics** (FID, Dice, SSIM scores)
+- **Organized dataset export** with complete metadata
+- **Comprehensive visualization dashboard** with multi-chart analysis
+
+#### **From CARLA Integration**:
+- **Direct CARLA vs SDXL comparison** with quantitative metrics
+- **Mixed training datasets** combining both approaches
+- **Domain adaptation results** for cross-platform compatibility
+- **Real-time validation** in simulation environment
 
 ## 📊 Performance Benchmarks
 
@@ -152,28 +174,119 @@ torch.cuda.set_per_process_memory_fraction(0.9)
 
 ```
 sdxl-rural-driving-generator/
-├── sdxl_rural_driving_gen.ipynb          # Main notebook
-├── fix_diffusers_dependencies.py         # Dependency auto-fixer
-├── enhanced_sdxl_realism_and_speed.py    # Speed & quality optimizations
-├── advanced_realism_techniques.py        # Advanced quality enhancements
-├── ultimate_speed_optimization.py        # Maximum speed optimizations
-├── README.md                             # This file
-└── outputs/                              # Generated images and results
-    ├── images/                           # Generated rural driving images
-    ├── analysis/                         # Quality analysis results
-    └── benchmarks/                       # Performance benchmarks
+├── 📓 sdxl_rural_driving_gen.ipynb       # Main generation notebook
+├── 🚗 carla_integration.ipynb            # CARLA simulator integration
+├── 🔧 fix_diffusers_dependencies.py      # Dependency auto-fixer
+├── 🚗 carla_integration_guide.py         # CARLA integration utilities
+├── 📖 README.md                          # This documentation
+├── 📁 models/                            # Downloaded model files
+├── 📁 quality_results/                   # Analysis and benchmark results
+├── 📁 synthetic_data/                    # Generated datasets
+└── 📁 .venv/                             # Virtual environment
 ```
+
+## 📓 Notebook Files Description
+
+### 🎨 **sdxl_rural_driving_gen.ipynb** - Main Generation Notebook
+**Purpose**: Primary notebook for generating high-quality synthetic rural driving images using SDXL
+
+**What it does**:
+- 🔧 **Automatic Dependency Setup**: Installs and configures all required packages with conflict resolution
+- 🎨 **SDXL Pipeline Configuration**: Sets up Stable Diffusion XL with optimized parameters for rural scenes
+- 🖼️ **High-Quality Image Generation**: Creates 15-50 photorealistic rural driving images (1024x1024)
+- 📊 **Real Data Comparison**: Compares generated images against KITTI, Cityscapes, BDD100K datasets
+- 🎮 **CARLA Simulation Comparison**: Benchmarks against CARLA simulator quality metrics
+- 📈 **Advanced Evaluation**: Calculates FID, Dice, SSIM scores for quantitative quality assessment
+- 💾 **Dataset Export**: Saves images and metadata in organized directory structure
+
+**Key Features**:
+- Professional prompt engineering for realistic rural roads
+- Automatic quality filtering and enhancement
+- Comprehensive similarity analysis (brightness, edge density, color distribution)
+- Performance benchmarking and optimization recommendations
+- Export-ready datasets with complete metadata
+
+**Expected Runtime**: 15-30 minutes for full generation and analysis
+**Output**: 15-50 high-quality rural driving images + comprehensive quality reports
+
+---
+
+### 🚗 **carla_integration.ipynb** - CARLA Simulator Integration
+**Purpose**: Integrates SDXL generated data with CARLA simulator for validation and comparison
+
+**What it does**:
+- 🔌 **CARLA Connection**: Establishes connection to running CARLA simulator instance
+- 📸 **Real-time Capture**: Captures images from CARLA's camera sensors in rural environments
+- 🔄 **Direct Comparison**: Side-by-side comparison of SDXL vs CARLA image quality
+- 📊 **Quantitative Analysis**: Calculates similarity metrics between synthetic approaches
+- 🎯 **Domain Adaptation**: Techniques to make SDXL images more CARLA-compatible
+- 📈 **Training Data Augmentation**: Creates mixed datasets combining both approaches
+- 🎮 **Interactive Validation**: Real-time quality assessment in simulation environment
+
+**Key Features**:
+- Automated vehicle spawning and camera setup in CARLA
+- Batch comparison sessions with statistical analysis
+- Domain adaptation algorithms for cross-platform compatibility
+- Mixed dataset creation for enhanced ML training
+- Performance profiling of both generation methods
+
+**Prerequisites**: 
+- CARLA simulator installed and running
+- CARLA Python API: `pip install carla`
+
+**Expected Runtime**: 10-20 minutes for comparison session
+**Output**: Comparative analysis reports and mixed training datasets
+
+---
+
+## 🔧 **Supporting Files**
+
+### **fix_diffusers_dependencies.py** - Dependency Management
+**Purpose**: Automatically resolves common dependency conflicts in GPU environments
+
+**What it does**:
+- 🔍 **Version Detection**: Checks current package versions and identifies conflicts
+- 🗑️ **Clean Uninstall**: Removes conflicting transformers/diffusers versions
+- 📦 **Compatible Installation**: Installs tested compatible versions of all packages
+- ✅ **Import Verification**: Tests all critical imports to ensure functionality
+- 🌐 **Environment Detection**: Handles Colab, Kaggle, and local environment specifics
+
+**Key Packages Managed**:
+- `transformers`, `diffusers`, `accelerate`, `safetensors`
+- `matplotlib`, `opencv-python`, `scipy`, `scikit-learn`, `seaborn`
+- `numpy`, `pillow`, `requests`, `tqdm`, `scikit-image`
+
+### **carla_integration_guide.py** - CARLA Utilities
+**Purpose**: Comprehensive utilities and examples for CARLA-SDXL integration
+
+**What it provides**:
+- 📚 **Complete Integration Classes**: Ready-to-use CARLA connection and data management
+- 🔄 **Comparison Algorithms**: Advanced image similarity and quality assessment
+- 🎯 **Domain Adaptation Tools**: Functions to adapt SDXL images for CARLA compatibility
+- 📊 **Benchmarking Suite**: Comprehensive evaluation framework
+- 💡 **Usage Examples**: Complete working examples and best practices
 
 ## 🎨 Customization
 
-### Modify Generation Parameters
+### **Main Notebook Customization**
+
+#### Modify Generation Parameters
 ```python
-# In the generation cell, adjust these parameters:
-NUM_IMAGES = 100        # Number of images to generate
-WIDTH = 1024           # Image width
-HEIGHT = 1024          # Image height
-INFERENCE_STEPS = 25   # Quality vs speed tradeoff
-GUIDANCE_SCALE = 7.5   # Prompt adherence strength
+# In sdxl_rural_driving_gen.ipynb, adjust these parameters:
+NUM_IMAGES = 50         # Number of images to generate (15-100)
+WIDTH = 1024           # Image width (512, 768, 1024)
+HEIGHT = 1024          # Image height (512, 768, 1024)
+INFERENCE_STEPS = 25   # Quality vs speed tradeoff (15-40)
+GUIDANCE_SCALE = 7.5   # Prompt adherence strength (5.0-9.0)
+```
+
+#### Analysis Configuration
+```python
+# Customize quality analysis parameters:
+REAL_DATA_COMPARISON = True      # Enable/disable real dataset comparison
+CARLA_COMPARISON = True          # Enable/disable CARLA benchmarking
+ADVANCED_METRICS = True          # Enable/disable FID/Dice/SSIM calculation
+EXPORT_DATASET = True            # Enable/disable dataset export
 ```
 
 ### Custom Prompts
@@ -195,39 +308,71 @@ selected_images = intelligent_image_selection(all_images, target_count=50)
 
 ## 📈 Advanced Usage
 
-### Speed Optimization
-For maximum generation speed, use the ultra-fast configuration:
+### **Main Notebook Advanced Features**
+
+#### Speed Optimization
 ```python
-# Ultra-fast generation (5-10x speedup)
-from enhanced_sdxl_realism_and_speed import ultra_fast_batch_generation
-fast_images = ultra_fast_batch_generation(prompts, negative_prompt, num_images=100)
+# In sdxl_rural_driving_gen.ipynb, enable speed optimizations:
+QUALITY_PARAMS = {
+    'num_inference_steps': 20,    # Reduce for speed (15-25)
+    'guidance_scale': 6.5,        # Lower for faster generation
+    'width': 1024,
+    'height': 1024
+}
 ```
 
-### Quality Enhancement
-For maximum realism, apply advanced techniques:
+#### Quality Enhancement
 ```python
-# Advanced realism enhancements
-from advanced_realism_techniques import real_time_enhancement
-enhanced_images = [real_time_enhancement(img) for img in generated_images]
+# Enable advanced post-processing in the notebook:
+ENABLE_POST_PROCESSING = True     # Apply realism enhancements
+QUALITY_FILTERING = True          # Filter low-quality images
+BRIGHTNESS_OPTIMIZATION = True    # Match real dataset brightness
 ```
 
-### Parallel Generation
-For multi-GPU setups:
+### **CARLA Integration Advanced Features**
+
+#### Custom Comparison Sessions
 ```python
-# Parallel generation across multiple GPUs
-from ultimate_speed_optimization import setup_parallel_generation
-pipes = setup_parallel_generation(pipe, num_parallel=2)
+# In carla_integration.ipynb, customize comparison:
+COMPARISON_SETTINGS = {
+    'num_comparisons': 20,        # Number of image pairs to compare
+    'carla_environments': ['Town01', 'Town03', 'Town06'],
+    'weather_conditions': ['ClearNoon', 'CloudyNoon', 'SoftRainNoon'],
+    'camera_fov': 90,             # Match SDXL perspective
+}
+```
+
+#### Domain Adaptation
+```python
+# Apply domain adaptation techniques:
+ADAPTATION_SETTINGS = {
+    'brightness_matching': True,   # Match CARLA brightness levels
+    'color_correction': True,      # Adjust color temperature
+    'blur_simulation': True,       # Simulate CARLA rendering blur
+}
 ```
 
 ## 🔬 Research Applications
 
-This dataset generator is suitable for:
+### **Main Notebook Applications**
+- **Autonomous Vehicle Training**: Generate diverse rural road scenarios for ML training
+- **Computer Vision Research**: Study geometric accuracy and photorealism in synthetic data
+- **Dataset Augmentation**: Expand limited real driving datasets with high-quality synthetic images
+- **Quality Benchmarking**: Establish baselines for synthetic data generation quality
+- **Prompt Engineering Research**: Optimize text-to-image generation for specific domains
 
-- **Autonomous Vehicle Training**: High-quality rural road scenarios
-- **Computer Vision Research**: Geometric accuracy and realism studies
-- **Synthetic Data Augmentation**: Expanding existing driving datasets
-- **Simulation Validation**: Comparing synthetic vs real data quality
-- **Domain Adaptation**: Rural to urban driving scenario transfer
+### **CARLA Integration Applications**
+- **Simulation Validation**: Compare different synthetic data generation approaches
+- **Domain Transfer Studies**: Research cross-platform compatibility of synthetic data
+- **Mixed Training Datasets**: Create hybrid datasets combining multiple generation methods
+- **Real-time Quality Assessment**: Validate synthetic data quality in simulation environments
+- **Autonomous Driving Research**: Test perception algorithms on diverse synthetic data sources
+
+### **Combined Research Opportunities**
+- **Multi-Modal Synthetic Data**: Leverage both photorealistic and simulation-based approaches
+- **Quality vs Performance Trade-offs**: Study the balance between generation speed and image quality
+- **Domain Adaptation Techniques**: Develop methods to adapt synthetic data across different platforms
+- **Evaluation Methodology**: Establish comprehensive metrics for synthetic driving data quality
 
 ## 📊 Quality Metrics
 
