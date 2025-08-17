@@ -1,0 +1,62 @@
+{
+  "carla_connection": {
+    "host": "localhost",
+    "port": 2000,
+    "timeout": 10.0
+  },
+  "test_parameters": {
+    "test_duration_seconds": 300,
+    "scenarios_to_test": [
+      {
+        "map": "Town07",
+        "weather": "ClearNoon",
+        "description": "Rural roads, clear weather",
+        "spawn_points": "random"
+      },
+      {
+        "map": "Town07", 
+        "weather": "CloudyNoon",
+        "description": "Rural roads, cloudy weather",
+        "spawn_points": "random"
+      },
+      {
+        "map": "Town07",
+        "weather": "WetNoon", 
+        "description": "Rural roads, wet conditions",
+        "spawn_points": "random"
+      },
+      {
+        "map": "Town06",
+        "weather": "ClearSunset",
+        "description": "Highway-like roads, sunset lighting", 
+        "spawn_points": "highway"
+      }
+    ]
+  },
+  "synthetic_data": {
+    "images_path": "generated_images",
+    "model_with_synthetic": "models/rural_driving_with_synthetic.pth",
+    "model_baseline": "models/rural_driving_baseline.pth"
+  },
+  "metrics": {
+    "primary_metrics": [
+      "collisions",
+      "lane_departures", 
+      "average_speed",
+      "distance_traveled",
+      "path_efficiency"
+    ],
+    "secondary_metrics": [
+      "steering_smoothness",
+      "throttle_usage",
+      "brake_usage",
+      "reaction_times"
+    ]
+  },
+  "output": {
+    "save_results": true,
+    "create_plots": true,
+    "save_camera_data": false,
+    "results_directory": "carla_test_results"
+  }
+}
